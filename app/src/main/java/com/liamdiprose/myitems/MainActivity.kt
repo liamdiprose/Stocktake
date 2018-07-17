@@ -47,13 +47,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val db = CategoryDataBase.getInstance(this.applicationContext)
-//        val categoryDao = db?.categoryDao()!!
+        val db = CategoryDataBase.getInstance(this.applicationContext)
+        val categoryDao = db?.categoryDao()!!
+        categoryDao.insertCategory(Category(null, "TEST", null))
 
-//        val model = ItemStore(categoryDao)
+        val model = ItemStore(categoryDao)
 
-//        model.getCategories(null)
-//                .subscribeBy { listAdapter.addName(it.name) }
+        model.getCategories(null)
+                .subscribeBy { listAdapter.addName(it.name) }
 
         recyclerView_main.layoutManager = LinearLayoutManager(this.applicationContext)
         recyclerView_main.adapter = listAdapter
@@ -70,6 +71,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+        })
+
+        floatingActionButton.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(p0: View?) {
+                categoryDao.insertCategory(Category(null, "TEST", null))
+            }
         })
     }
 
