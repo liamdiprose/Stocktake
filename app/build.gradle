@@ -24,32 +24,6 @@ android {
     }
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
-    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
-    implementation 'com.google.android.material:material:1.0.0-beta01'
-//    implementation "android.arch.persistence.room:runtime:$room_version"
-//        exclude group: 'com.android.support'
-//        exclude module: 'appcompat-v7'
-//        exclude module: 'support-v4'
-//    })
-//    kapt "android.arch.persistence.room:compiler:$room_version"
-//    implementation 'com.android.support:support-v4:28.0.0-alpha3'
-//    implementation 'com.android.support:appcompat-v7:28.0.0-oa'
-
-
-//    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.room_version"
-//
-//    androidTestImplementation "android.arch.persistence.room:testing:$rootProject.room_version"
-}
-
 //configurations.all {
 //    resolutionStrategy {
 //        force 'com.android.support:support-v4:28.0.0-alpha3'
@@ -57,3 +31,34 @@ dependencies {
 //    }
 //
 //}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+//    implementation 'com.android.support:support-annotations:27.1.1'
+//    com.android.support:support-compat:26.1.0
+//    implementation 'com.android.support:support-core-utils:28.0.0-alpha3'
+
+
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation("android.arch.persistence.room:runtime:$room_version", {
+        exclude group: 'com.android.support'
+        exclude module: 'support-core-utils'
+//        exclude module: 'appcompat-v7'
+//        exclude module: 'support-v4'
+    })
+    kapt "android.arch.persistence.room:compiler:$room_version"
+
+
+//    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.room_version"
+//
+//    androidTestImplementation "android.arch.persistence.room:testing:$rootProject.room_version"
+}
+
