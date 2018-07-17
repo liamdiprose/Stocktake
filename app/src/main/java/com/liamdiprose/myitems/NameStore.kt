@@ -15,6 +15,5 @@ class NameStore {
 
         return this.names.toObservable()
                 .repeat(amount)
-//                .delay(1, TimeUnit.SECONDS)
     }
 }

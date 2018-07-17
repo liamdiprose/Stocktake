@@ -2,19 +2,22 @@ package com.liamdiprose.myitems
 
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.toObservable
-import android.database.
+import com.liamdiprose.myitems.Category
 
-typealias Category = String
+import android.arch.persistence.room.RoomDatabase
+import android.arch.persistence.room.Room
+
+//typealias Category = String
 typealias Item = String
 typealias SearchResult = String
 
 
-class ItemStore(val db: Any) {
+class ItemStore(val db: CategoryDao) {
 
-    var categories = listOf<Category>("Cords", "Networking", "Promotional")
+//    var categories = listOf<Category>("Cords", "Networking", "Promotional")
 
     fun getCategories(parent: Category?): Observable<Category> {
-        return this.categories
+        return db.getCategories(parent?.id)
                 .toObservable()
     }
 
@@ -31,7 +34,7 @@ class ItemStore(val db: Any) {
     }
 
     fun addCategory(parent: Category?, category: Category) {
-        TODO()
+        db.insertCategory(Category(null, "Bob", parent?.id))
     }
 
     /** TODO: Prefetching, Getting Updates */

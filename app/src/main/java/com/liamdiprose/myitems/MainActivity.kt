@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import io.reactivex.rxkotlin.subscribeBy
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
-import android.widget.ExpandableListView
 
 interface OnItemClickListener {
     fun onItemClicked(position: Int, view: View)
@@ -49,15 +47,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val model = NameStore()
+        val db = CategoryDataBase.getInstance(this.applicationContext)
+        val categoryDao = db?.categoryDao()!!
 
-        model.fetchNames(4)
-                .subscribeBy { listAdapter.addName(it) }
+        val model = ItemStore(categoryDao)
+
+        model.getCategories(null)
+                .subscribeBy { listAdapter.addName(it.name) }
 
         recyclerView_main.layoutManager = LinearLayoutManager(this.applicationContext)
-
         recyclerView_main.adapter = listAdapter
-
         recyclerView_main.addOnItemClickListener(object: OnItemClickListener {
 
             override fun onItemClicked(position: Int, view: View) {
