@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Categories</string>
+    <string name="first_names">First Names</string>
+    <string name="last_names">%s</string>
+</resources>
