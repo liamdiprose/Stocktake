@@ -35,12 +35,12 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
     implementation 'com.google.android.material:material:1.0.0-beta01'
-    implementation "android.arch.persistence.room:runtime:$room_version"
+//    implementation "android.arch.persistence.room:runtime:$room_version"
 //        exclude group: 'com.android.support'
 //        exclude module: 'appcompat-v7'
 //        exclude module: 'support-v4'
 //    })
-    kapt "android.arch.persistence.room:compiler:$room_version"
+//    kapt "android.arch.persistence.room:compiler:$room_version"
 //    implementation 'com.android.support:support-v4:28.0.0-alpha3'
 //    implementation 'com.android.support:appcompat-v7:28.0.0-oa'
 
